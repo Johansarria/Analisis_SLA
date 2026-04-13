@@ -1,0 +1,20 @@
+# Entornos virtuales
+venv_linux/
+venv/
+.env
+
+# Archivos de la base de datos y datos crudos pesados
+*.csv
+*.xlsx
+
+# (Opcional) Puedes comentar las lneas de arriba si SÍ quieres subir los CSV más pequeños.
+# Sin embargo, el archivo JiraATP.csv (145MB) EXCEDE el límite de 100MB de GitHub y debe ser ignorado siempre:
+JiraATP.csv
+
+# Modelos entrenados (opcional si no quieres subir archivos binarios)
+# *.pkl
+
+# Cosas de Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
