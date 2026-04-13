@@ -131,6 +131,12 @@ python entrenar_oraculo.py
 python simulador_noc.py
 ```
 
+### 5. Ejecutar pruebas de integridad
+```bash
+python -m pytest test_operacion_sla.py -v
+```
+> ✅ Si los 8 tests pasan, el entorno está correctamente configurado y los modelos funcionan.
+
 ---
 
 ## 🧪 Pruebas Unitarias e Integración
