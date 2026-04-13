@@ -44,6 +44,9 @@ MLpractica2/
 ├── 🚨 Sistema en Vivo (NOC)
 │   └── simulador_noc.py           # Simula tickets en tiempo real y emite alertas de riesgo ANS
 │
+├── 🧪 Pruebas
+│   └── test_operacion_sla.py      # Suite pytest: pruebas unitarias e integración del sistema
+│
 ├── 🧠 Modelos Entrenados
 │   ├── modelo_ans_xgboost.pkl     # Clasificador ANS (CUMPLE/NO CUMPLE)
 │   └── modelo_oraculo_xgb.pkl    # Regresor de tiempo de resolución
@@ -126,6 +129,59 @@ python entrenar_oraculo.py
 
 # Ejecutar simulador NOC
 python simulador_noc.py
+```
+
+---
+
+## 🧪 Pruebas Unitarias e Integración
+
+El proyecto incluye una suite de pruebas automatizadas con **pytest** en `test_operacion_sla.py` que valida el sistema de extremo a extremo.
+
+### Tipos de Pruebas
+
+| # | Prueba | Tipo | Descripción |
+|---|--------|------|-------------|
+| 1 | `test_file_existence[datos_ans_limpios.csv]` | Integración | Verifica que el pipeline de preparación generó el archivo |
+| 2 | `test_file_existence[datos_jira_regresion.csv]` | Integración | Verifica que la transformación de Jira generó el dataset |
+| 3 | `test_file_existence[serie_tiempo_zonas.csv]` | Integración | Verifica que la serie temporal de demanda fue generada |
+| 4 | `test_file_existence[modelo_ans_xgboost.pkl]` | Integración | Verifica que el modelo clasificador fue entrenado y guardado |
+| 5 | `test_file_existence[modelo_oraculo_xgb.pkl]` | Integración | Verifica que el modelo regresor fue entrenado y guardado |
+| 6 | `test_data_integrity` | Unitaria | Valida que no hay nulos en `Minutos_Resolucion` y que las columnas `Nodo` y `Prioridad` existen |
+| 7 | `test_model_prediction` | Unitaria | Carga el Oráculo, genera una predicción con datos dummy y verifica que retorna un `float` |
+| 8 | `test_projection_logic` | Unitaria | Valida la lógica de negocio: la proyección de fin de mes nunca puede ser menor al valor real actual |
+
+### Resultados de la Última Ejecución
+
+```
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-7.4.3
+rootdir: C:\MLpractica2
+
+collected 8 items
+
+test_operacion_sla.py::test_file_existence[datos_ans_limpios.csv]   PASSED [ 12%]
+test_operacion_sla.py::test_file_existence[datos_jira_regresion.csv] PASSED [ 25%]
+test_operacion_sla.py::test_file_existence[serie_tiempo_zonas.csv]   PASSED [ 37%]
+test_operacion_sla.py::test_file_existence[modelo_ans_xgboost.pkl]   PASSED [ 50%]
+test_operacion_sla.py::test_file_existence[modelo_oraculo_xgb.pkl]   PASSED [ 62%]
+test_operacion_sla.py::test_data_integrity                            PASSED [ 75%]
+test_operacion_sla.py::test_model_prediction                          PASSED [ 87%]
+test_operacion_sla.py::test_projection_logic                          PASSED [100%]
+
+============================== 8 passed in 1.86s ==============================
+```
+
+### Cómo Ejecutar las Pruebas
+
+```bash
+# Con entorno activado
+source venv_linux/bin/activate
+
+# Ejecutar suite completa
+pytest test_operacion_sla.py -v
+
+# Ejecutar con reporte de cobertura
+pytest test_operacion_sla.py -v --tb=short
 ```
 
 ---
