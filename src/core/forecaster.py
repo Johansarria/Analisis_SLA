@@ -66,9 +66,9 @@ class DemandForecaster:
             
         return np.mean(maes)
         
-    def train(self, df: pd.DataFrame):
+    def train(self, df: pd.DataFrame, n_trials: int = 15):
         """Entrena el modelo de forecasting usando Optuna y validación temporal."""
-        logger.info("Iniciando entrenamiento del modelo de Forecasting por Zonas y Nodos...")
+        logger.info(f"Iniciando entrenamiento del modelo de Forecasting ({n_trials} trials)...")
         
         # Ordenar por fecha para que el TimeSeriesSplit tenga sentido lógico
         df = df.sort_values('Fecha').reset_index(drop=True)
@@ -78,7 +78,7 @@ class DemandForecaster:
         
         optuna.logging.set_verbosity(optuna.logging.WARNING)
         study = optuna.create_study(direction='minimize')
-        study.optimize(lambda trial: self._objective(trial, X, y), n_trials=15)
+        study.optimize(lambda trial: self._objective(trial, X, y), n_trials=n_trials)
         
         best_params = study.best_params
         best_params['random_state'] = 42

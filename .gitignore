@@ -11,10 +11,17 @@ venv/
 # Sin embargo, el archivo JiraATP.csv (145MB) EXCEDE el límite de 100MB de GitHub y debe ser ignorado siempre:
 JiraATP.csv
 
-# Modelos entrenados (opcional si no quieres subir archivos binarios)
-# *.pkl
+# Modelos entrenados (archivos binarios grandes)
+models/*.pkl
+
+# Carpetas de salida
+outputs/
+data/processed/
 
 # Cosas de Python
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+.vscode/
+.idea/
+*.log

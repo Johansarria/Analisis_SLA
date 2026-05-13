@@ -15,7 +15,7 @@ Reducir los incumplimientos de SLA en el NOC (Network Operations Center) mediant
 
 ---
 
-## Estructura del Proyecto (v2.0 -- Refactorizado)
+## Estructura del Proyecto (v4.0 -- Integracion Climatica)
 
 El proyecto fue reestructurado siguiendo los principios **SOLID**, **Clean Code** y las directrices definidas en [AGENTES.md](AGENTES.md). Los scripts originales monoliticos se movieron a `legacy/` como referencia historica.
 
@@ -33,7 +33,8 @@ Analisis_SLA/
 │   │   ├── models.py                 # ModelTrainer: clasificador ANS + regresor Oraculo (XGBoost)
 │   │   └── detector.py               # AnomalyDetector: deteccion de nodos criticos (K-Means)
 │   ├── data/
-│   │   └── etl.py                    # DataProcessor: limpieza de Jira y Excel ANS
+│   │   ├── etl.py                    # DataProcessor: limpieza de Jira y Excel ANS
+│   │   └── weather.py                # WeatherProvider: conexion con API Open-Meteo
 │   ├── utils/
 │   │   └── visualization.py          # Visualizer: generacion de graficos (barras, radar, pie)
 │   ├── scripts/
@@ -80,10 +81,17 @@ Clase que gestiona el ciclo de vida completo de los modelos XGBoost:
 
 Gestiona el modelo de series de tiempo para proyectar la demanda de incidencias a nivel granular:
 
-| Metodo | Funcion |
-|--------|---------|
 | `train()` | Entrena modelo XGBoost usando TimeSeriesSplit, aplicando One-Hot Encoding doble a `Zona` y `Nodo`. Optimiza hiperparámetros con Optuna. |
 | `predict_future()` | Predice iterativamente la demanda a N días aislando el cálculo de promedios móviles para combinaciones geográficas estrictas. |
+
+### `src/core/forecaster_v4.py` -- DemandForecasterV4 (Nuevo)
+
+Evolucion del predictor de demanda que integra factores exogenos:
+
+- **Mejora 6**: Integracion de **Open-Meteo API**.
+- **Variables climaticas**: Precipitacion (mm), Temperatura Max, Viento, Lluvia acumulada 3d y alertas de tormenta.
+- **Ensemble Estacional**: Combina la salida de XGBoost con la media historica por dia de la semana (DOW).
+- **Quantile Regression**: Entrenado con `quantile_alpha=0.6` para evitar subestimar picos criticos.
 
 ### `src/core/detector.py` -- AnomalyDetector
 
@@ -103,6 +111,12 @@ Genera graficos usando matplotlib y seaborn:
 | `plot_operational_distribution()` | Pie chart de carga operativa por zona |
 | `plot_anomaly_radar()` | Barras de criticidad de los nodos anomalos |
 | `plot_demand_forecast()` | Multi-gráficos separados por Zona, conteniendo los pronósticos por Nodo |
+
+### Herramientas de Diagnostico y Validacion
+
+- `analisis_discrepancia.py`: Analiza autocorrelacion nodal, desglosa picos de demanda y detecta propagacion de errores en Lags.
+- `plot_zcen_3months.py`: Genera comparativos mensuales de 90 dias para la Zona Centro.
+- `predict_all_zones_today.py`: Genera el reporte ejecutivo de proyecciones para el dia en curso.
 
 ### Scripts Orquestadores (`src/scripts/`)
 
@@ -185,13 +199,13 @@ Pruebas incluidas:
 
 Comparado con la version original de scripts monoliticos:
 
-| Aspecto | v1.0 | v2.0+ (Forecasting Nodal) |
+| Aspecto | v1.0 | v4.0 (Weather-Aware) |
 |---------|------|------|
-| Arquitectura | 14 scripts sueltos en raiz | Paquete `src/` con módulos altamente cohesivos (SOLID) |
-| Configuracion | Rutas hardcodeadas en cada script | `src/config.py` centralizado con mapeo diccionario estricto |
-| Responsabilidades | Cada script hacia ETL + modelo + graficos | Separacion: `etl.py`, `models.py`, `detector.py`, `forecaster.py` |
-| Orquestacion | Ejecucion manual script por script | `run_pipeline.py` y `run_forecasting.py` automatizados |
-| Nivel Analítico | Predicción global única | Predicción geolocalizada hasta nivel **Nodo** (30 sub-entidades) |
+| Arquitectura | 14 scripts sueltos en raiz | Paquete `src/` modular (SOLID) |
+| Configuracion | Rutas hardcodeadas | `src/config.py` centralizado |
+| Datos Exogenos | Ninguno | **Clima Open-Meteo** (Precipitacion, Temp, Viento) |
+| Optimizacion | Manual | Optuna HPO + Quantile Error |
+| Precision | Global | Granular por **Nodo** y estacionalidad DOW |
 
 ---
 
