@@ -76,6 +76,15 @@ Clase que gestiona el ciclo de vida completo de los modelos XGBoost:
 | `train_oraculo_regressor()` | Entrena regresor XGBoost para predecir minutos de resolucion. Evalua con MAE. Guarda en `modelo_oraculo_xgb.pkl` |
 | `load_model()` | Carga modelos entrenados desde disco |
 
+### `src/core/forecaster.py` -- DemandForecaster
+
+Gestiona el modelo de series de tiempo para proyectar la demanda de incidencias a nivel granular:
+
+| Metodo | Funcion |
+|--------|---------|
+| `train()` | Entrena modelo XGBoost usando TimeSeriesSplit, aplicando One-Hot Encoding doble a `Zona` y `Nodo`. Optimiza hiperparámetros con Optuna. |
+| `predict_future()` | Predice iterativamente la demanda a N días aislando el cálculo de promedios móviles para combinaciones geográficas estrictas. |
+
 ### `src/core/detector.py` -- AnomalyDetector
 
 Usa **K-Means** (scikit-learn) para agrupar nodos por perfil de fallas:
@@ -86,25 +95,25 @@ Usa **K-Means** (scikit-learn) para agrupar nodos por perfil de fallas:
 
 ### `src/utils/visualization.py` -- Visualizer
 
-Genera tres tipos de graficos usando matplotlib y seaborn:
+Genera graficos usando matplotlib y seaborn:
 
 | Metodo | Grafico generado |
 |--------|------------------|
 | `plot_risk_comparison()` | Barras comparativas Real vs Proyectado (top 10 nodos) |
 | `plot_operational_distribution()` | Pie chart de carga operativa por zona |
 | `plot_anomaly_radar()` | Barras de criticidad de los nodos anomalos |
+| `plot_demand_forecast()` | Multi-gráficos separados por Zona, conteniendo los pronósticos por Nodo |
 
-### `src/scripts/run_pipeline.py` -- Pipeline Maestro
+### Scripts Orquestadores (`src/scripts/`)
 
-Orquesta el flujo completo en 5 etapas:
+- `run_pipeline.py`: Orquesta el flujo de clasificación y detección de anomalías (ANS y K-Means).
+- `run_forecasting.py`: Orquesta de forma independiente el flujo de predicción de demanda de tickets (Time Series XGBoost).
 
-1. Asegura estructura de directorios
-2. Ejecuta ETL (Jira + ANS)
-3. Entrena modelos XGBoost (clasificador + regresor)
-4. Detecta nodos criticos con K-Means
-5. Genera visualizaciones de anomalias
-
-Ejecucion: `python -m src.scripts.run_pipeline`
+Ejecucion: 
+```bash
+python -m src.scripts.run_pipeline
+python -m src.scripts.run_forecasting
+```
 
 ---
 
@@ -129,10 +138,16 @@ Colocar los archivos fuente en `data/raw/`:
 - `JiraATP.csv` -- Export de incidencias desde Jira
 - `BASE PARA DATOS O&M FEBRERO ZONAS-REVISADO CALI (2).xlsx` -- Datos de ANS
 
-### 4. Ejecutar el Pipeline Maestro
+### 4. Ejecutar el Sistema
 
+Pipeline general (Clasificación/Oráculo/Anomalías):
 ```bash
 python -m src.scripts.run_pipeline
+```
+
+Predicción de demanda de tickets (Forecasting por Zona/Nodo):
+```bash
+python -m src.scripts.run_forecasting
 ```
 
 ### 5. Ejecutar pruebas de integridad
@@ -155,29 +170,28 @@ Pruebas incluidas:
 |-----------------|--------------------------------------------------|
 | `pandas`        | Manipulacion y limpieza de datos                 |
 | `numpy`         | Operaciones vectoriales y soporte numerico       |
-| `xgboost`       | Modelos de clasificacion (ANS) y regresion (Oraculo) |
+| `xgboost`       | Modelos de clasificacion (ANS), regresion (Oraculo) y Time Series (Forecasting) |
 | `scikit-learn`  | Preprocesamiento (StandardScaler), clustering (K-Means) y metricas |
 | `matplotlib`    | Visualizacion de graficos de operacion           |
 | `seaborn`       | Estilos y paletas para visualizaciones           |
+| `optuna`        | Optimización automática de hiperparámetros       |
 | `joblib`        | Serializacion de modelos entrenados              |
 | `pytest`        | Framework de pruebas automatizadas               |
 | `openpyxl`      | Lectura de archivos Excel (.xlsx)                |
 
 ---
 
-## Cambios en v2.0
+## Cambios en v2.0 (Y extensiones Nodos)
 
 Comparado con la version original de scripts monoliticos:
 
-| Aspecto | v1.0 | v2.0 |
+| Aspecto | v1.0 | v2.0+ (Forecasting Nodal) |
 |---------|------|------|
-| Arquitectura | 14 scripts sueltos en raiz | Paquete `src/` con 5 modulos (SOLID) |
-| Configuracion | Rutas hardcodeadas en cada script | `src/config.py` centralizado |
-| Responsabilidades | Cada script hacia ETL + modelo + graficos | Separacion: `etl.py`, `models.py`, `detector.py`, `visualization.py` |
-| Orquestacion | Ejecucion manual script por script | `run_pipeline.py` orquesta las 5 etapas automaticamente |
-| Testing | Sin pruebas | Suite Pytest con 4 categorias de tests |
-| Guia IA | Inexistente | `AGENTES.md` con reglas obligatorias para agentes IA |
-| Scripts originales | En raiz | Movidos a `legacy/` como referencia |
+| Arquitectura | 14 scripts sueltos en raiz | Paquete `src/` con módulos altamente cohesivos (SOLID) |
+| Configuracion | Rutas hardcodeadas en cada script | `src/config.py` centralizado con mapeo diccionario estricto |
+| Responsabilidades | Cada script hacia ETL + modelo + graficos | Separacion: `etl.py`, `models.py`, `detector.py`, `forecaster.py` |
+| Orquestacion | Ejecucion manual script por script | `run_pipeline.py` y `run_forecasting.py` automatizados |
+| Nivel Analítico | Predicción global única | Predicción geolocalizada hasta nivel **Nodo** (30 sub-entidades) |
 
 ---
 

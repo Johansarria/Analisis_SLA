@@ -32,7 +32,8 @@ JIRA_COLUMNS_MAP = {
     'Creada': 'Fecha_Creacion',
     'Campo personalizado (Solución afectación )': 'Fecha_Solucion',
     'Campo personalizado (Nodo Afectado)': 'Nodo',
-    'Campo personalizado (Usuarios Iniciales Afectados)': 'Usuarios_Afectados'
+    'Campo personalizado (Usuarios Iniciales Afectados)': 'Usuarios_Afectados',
+    'Nombre del proyecto': 'Zona'
 }
 
 # --- MESES ESPAÑOL A INGLÉS ---

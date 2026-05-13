@@ -1,0 +1,1405 @@
+Resumen
+Clave de incidencia
+ID de la incidencia
+Tipo de Incidencia
+Estado
+Clave del proyecto
+Nombre del proyecto
+Tipo de proyecto
+Responsable del proyecto
+ID del responsable del proyecto
+Descripción del proyecto
+URL del proyecto
+Prioridad
+Resolución
+Persona asignada
+ID de la persona asignada
+Informador
+ID del informador
+Creador
+ID del creador
+Creada
+Actualizada
+Vista por Última Vez
+Resuelta
+Fecha de vencimiento
+Votos
+Descripción
+Entorno
+Interesados
+Interesados.1
+Interesados.2
+Interesados.3
+Interesados.4
+Interesados.5
+Interesados.6
+ID de los interesados
+ID de los interesados.1
+ID de los interesados.2
+ID de los interesados.3
+ID de los interesados.4
+ID de los interesados.5
+ID de los interesados.6
+Estimación original
+Trabajo restante estimado
+Tiempo Trabajado
+Relación de trabajo
+Σ Estimación original
+Σ Trabajo restante estimado
+Σ Tiempo empleado
+Nivel de Seguridad
+Enlace a la incidencia interna (Blocks)
+Enlace a la incidencia interna (Blocks).1
+Enlace a la incidencia interna (Blocks).2
+Enlace a la incidencia interna (Blocks).3
+Enlace a la incidencia interna (Blocks).4
+Enlace a la incidencia interna (Blocks).5
+Enlace a la incidencia interna (Blocks).6
+Enlace de incidencia saliente (Blocks)
+Enlace de incidencia saliente (Blocks).1
+Enlace de incidencia saliente (Blocks).2
+Enlace de incidencia saliente (Blocks).3
+Enlace de incidencia saliente (Blocks).4
+Enlace de incidencia saliente (Blocks).5
+Enlace de incidencia saliente (Blocks).6
+Enlace de incidencia saliente (Blocks).7
+Enlace de incidencia saliente (Blocks).8
+Enlace de incidencia saliente (Blocks).9
+Enlace de incidencia saliente (Blocks).10
+Enlace de incidencia saliente (Blocks).11
+Enlace de incidencia saliente (Blocks).12
+Enlace de incidencia saliente (Blocks).13
+Enlace de incidencia saliente (Blocks).14
+Enlace de incidencia saliente (Blocks).15
+Enlace a la incidencia interna (Bloques)
+Enlace de incidencia saliente (Bloques)
+Enlace a la incidencia interna (Problem/Incident)
+Enlace a la incidencia interna (Problem/Incident).1
+Enlace a la incidencia interna (Problem/Incident).2
+Enlace a la incidencia interna (Problem/Incident).3
+Enlace a la incidencia interna (Problem/Incident).4
+Enlace a la incidencia interna (Problem/Incident).5
+Enlace a la incidencia interna (Problem/Incident).6
+Enlace a la incidencia interna (Problem/Incident).7
+Enlace a la incidencia interna (Problem/Incident).8
+Enlace a la incidencia interna (Problem/Incident).9
+Enlace a la incidencia interna (Problem/Incident).10
+Enlace a la incidencia interna (Problem/Incident).11
+Enlace a la incidencia interna (Problem/Incident).12
+Enlace a la incidencia interna (Problem/Incident).13
+Enlace a la incidencia interna (Problem/Incident).14
+Enlace de incidencia saliente (Problem/Incident)
+Enlace de incidencia saliente (Problem/Incident).1
+Enlace a la incidencia interna (Relates)
+Enlace a la incidencia interna (Relates).1
+Enlace a la incidencia interna (Relates).2
+Enlace de incidencia saliente (Relates)
+Enlace de incidencia saliente (Relates).1
+Adjunto
+Adjunto.1
+Adjunto.2
+Adjunto.3
+Adjunto.4
+Adjunto.5
+Adjunto.6
+Adjunto.7
+Adjunto.8
+Adjunto.9
+Adjunto.10
+Adjunto.11
+Adjunto.12
+Adjunto.13
+Adjunto.14
+Adjunto.15
+Adjunto.16
+Adjunto.17
+Adjunto.18
+Adjunto.19
+Adjunto.20
+Adjunto.21
+Adjunto.22
+Adjunto.23
+Adjunto.24
+Adjunto.25
+Adjunto.26
+Adjunto.27
+Adjunto.28
+Adjunto.29
+Adjunto.30
+Adjunto.31
+Adjunto.32
+Adjunto.33
+Adjunto.34
+Adjunto.35
+Adjunto.36
+Adjunto.37
+Adjunto.38
+Adjunto.39
+Adjunto.40
+Adjunto.41
+Adjunto.42
+Adjunto.43
+Adjunto.44
+Adjunto.45
+Adjunto.46
+Adjunto.47
+Adjunto.48
+Adjunto.49
+Adjunto.50
+Adjunto.51
+Adjunto.52
+Adjunto.53
+Adjunto.54
+Adjunto.55
+Adjunto.56
+Adjunto.57
+Adjunto.58
+Adjunto.59
+Adjunto.60
+Adjunto.61
+Adjunto.62
+Adjunto.63
+Adjunto.64
+Adjunto.65
+Adjunto.66
+Adjunto.67
+Adjunto.68
+Adjunto.69
+Adjunto.70
+Adjunto.71
+Adjunto.72
+Adjunto.73
+Adjunto.74
+Adjunto.75
+Adjunto.76
+Adjunto.77
+Adjunto.78
+Adjunto.79
+Adjunto.80
+Adjunto.81
+Adjunto.82
+Adjunto.83
+Adjunto.84
+Adjunto.85
+Adjunto.86
+Adjunto.87
+Adjunto.88
+Adjunto.89
+Adjunto.90
+Adjunto.91
+Adjunto.92
+Adjunto.93
+Adjunto.94
+Adjunto.95
+Adjunto.96
+Adjunto.97
+Adjunto.98
+Adjunto.99
+Adjunto.100
+Adjunto.101
+Adjunto.102
+Adjunto.103
+Adjunto.104
+Adjunto.105
+Adjunto.106
+Adjunto.107
+Adjunto.108
+Adjunto.109
+Adjunto.110
+Adjunto.111
+Adjunto.112
+Adjunto.113
+Adjunto.114
+Adjunto.115
+Adjunto.116
+Adjunto.117
+Adjunto.118
+Adjunto.119
+Adjunto.120
+Adjunto.121
+Adjunto.122
+Adjunto.123
+Adjunto.124
+Adjunto.125
+Adjunto.126
+Adjunto.127
+Adjunto.128
+Adjunto.129
+Adjunto.130
+Adjunto.131
+Adjunto.132
+Adjunto.133
+Adjunto.134
+Adjunto.135
+Adjunto.136
+Adjunto.137
+Adjunto.138
+Adjunto.139
+Adjunto.140
+Adjunto.141
+Adjunto.142
+Adjunto.143
+Adjunto.144
+Adjunto.145
+Adjunto.146
+Adjunto.147
+Adjunto.148
+Adjunto.149
+Adjunto.150
+Adjunto.151
+Adjunto.152
+Adjunto.153
+Adjunto.154
+Adjunto.155
+Adjunto.156
+Adjunto.157
+Adjunto.158
+Adjunto.159
+Adjunto.160
+Adjunto.161
+Adjunto.162
+Adjunto.163
+Adjunto.164
+Adjunto.165
+Adjunto.166
+Adjunto.167
+Adjunto.168
+Adjunto.169
+Adjunto.170
+Adjunto.171
+Adjunto.172
+Adjunto.173
+Adjunto.174
+Adjunto.175
+Adjunto.176
+Adjunto.177
+Adjunto.178
+Adjunto.179
+Adjunto.180
+Adjunto.181
+Adjunto.182
+Adjunto.183
+Adjunto.184
+Adjunto.185
+Adjunto.186
+Adjunto.187
+Adjunto.188
+Adjunto.189
+Adjunto.190
+Adjunto.191
+Adjunto.192
+Adjunto.193
+Adjunto.194
+Adjunto.195
+Adjunto.196
+Adjunto.197
+Adjunto.198
+Adjunto.199
+Adjunto.200
+Adjunto.201
+Adjunto.202
+Adjunto.203
+Adjunto.204
+Adjunto.205
+Adjunto.206
+Adjunto.207
+Adjunto.208
+Adjunto.209
+Adjunto.210
+Adjunto.211
+Adjunto.212
+Adjunto.213
+Adjunto.214
+Adjunto.215
+Adjunto.216
+Adjunto.217
+Adjunto.218
+Adjunto.219
+Adjunto.220
+Adjunto.221
+Adjunto.222
+Adjunto.223
+Adjunto.224
+Adjunto.225
+Adjunto.226
+Adjunto.227
+Adjunto.228
+Adjunto.229
+Adjunto.230
+Adjunto.231
+Adjunto.232
+Adjunto.233
+Adjunto.234
+Adjunto.235
+Adjunto.236
+Adjunto.237
+Adjunto.238
+Adjunto.239
+Adjunto.240
+Adjunto.241
+Adjunto.242
+Adjunto.243
+Adjunto.244
+Adjunto.245
+Adjunto.246
+Adjunto.247
+Adjunto.248
+Adjunto.249
+Adjunto.250
+Adjunto.251
+Adjunto.252
+Adjunto.253
+Adjunto.254
+Adjunto.255
+Adjunto.256
+Adjunto.257
+Adjunto.258
+Adjunto.259
+Adjunto.260
+Adjunto.261
+Adjunto.262
+Adjunto.263
+Adjunto.264
+Adjunto.265
+Adjunto.266
+Adjunto.267
+Adjunto.268
+Adjunto.269
+Adjunto.270
+Adjunto.271
+Adjunto.272
+Adjunto.273
+Adjunto.274
+Adjunto.275
+Adjunto.276
+Adjunto.277
+Adjunto.278
+Adjunto.279
+Adjunto.280
+Adjunto.281
+Adjunto.282
+Adjunto.283
+Adjunto.284
+Adjunto.285
+Adjunto.286
+Adjunto.287
+Adjunto.288
+Adjunto.289
+Adjunto.290
+Adjunto.291
+Adjunto.292
+Adjunto.293
+Adjunto.294
+Adjunto.295
+Adjunto.296
+Adjunto.297
+Adjunto.298
+Adjunto.299
+Adjunto.300
+Adjunto.301
+Adjunto.302
+Adjunto.303
+Adjunto.304
+Adjunto.305
+Adjunto.306
+Adjunto.307
+Adjunto.308
+Adjunto.309
+Adjunto.310
+Adjunto.311
+Adjunto.312
+Adjunto.313
+Adjunto.314
+Adjunto.315
+Adjunto.316
+Adjunto.317
+Adjunto.318
+Adjunto.319
+Adjunto.320
+Adjunto.321
+Adjunto.322
+Adjunto.323
+Adjunto.324
+Adjunto.325
+Adjunto.326
+Adjunto.327
+Adjunto.328
+Adjunto.329
+Adjunto.330
+Adjunto.331
+Adjunto.332
+Adjunto.333
+Adjunto.334
+Adjunto.335
+Adjunto.336
+Adjunto.337
+Adjunto.338
+Adjunto.339
+Adjunto.340
+Adjunto.341
+Adjunto.342
+Adjunto.343
+Adjunto.344
+Adjunto.345
+Adjunto.346
+Adjunto.347
+Adjunto.348
+Adjunto.349
+Adjunto.350
+Adjunto.351
+Adjunto.352
+Adjunto.353
+Adjunto.354
+Adjunto.355
+Adjunto.356
+Adjunto.357
+Adjunto.358
+Adjunto.359
+Adjunto.360
+Adjunto.361
+Adjunto.362
+Adjunto.363
+Adjunto.364
+Adjunto.365
+Adjunto.366
+Adjunto.367
+Adjunto.368
+Adjunto.369
+Adjunto.370
+Adjunto.371
+Adjunto.372
+Adjunto.373
+Adjunto.374
+Adjunto.375
+Adjunto.376
+Adjunto.377
+Adjunto.378
+Adjunto.379
+Adjunto.380
+Adjunto.381
+Adjunto.382
+Adjunto.383
+Adjunto.384
+Adjunto.385
+Adjunto.386
+Adjunto.387
+Adjunto.388
+Adjunto.389
+Adjunto.390
+Adjunto.391
+Adjunto.392
+Adjunto.393
+Adjunto.394
+Adjunto.395
+Adjunto.396
+Adjunto.397
+Adjunto.398
+Adjunto.399
+Adjunto.400
+Adjunto.401
+Adjunto.402
+Adjunto.403
+Adjunto.404
+Adjunto.405
+Adjunto.406
+Adjunto.407
+Adjunto.408
+Adjunto.409
+Adjunto.410
+Adjunto.411
+Adjunto.412
+Adjunto.413
+Adjunto.414
+Adjunto.415
+Adjunto.416
+Adjunto.417
+Adjunto.418
+Adjunto.419
+Adjunto.420
+Adjunto.421
+Adjunto.422
+Adjunto.423
+Adjunto.424
+Adjunto.425
+Adjunto.426
+Adjunto.427
+Adjunto.428
+Adjunto.429
+Adjunto.430
+Adjunto.431
+Adjunto.432
+Adjunto.433
+Adjunto.434
+Adjunto.435
+Adjunto.436
+Adjunto.437
+Adjunto.438
+Adjunto.439
+Adjunto.440
+Adjunto.441
+Campo personalizado (Actualizacion de Red)
+Campo personalizado (Affected hardware)
+Campo personalizado (Affected services)
+Campo personalizado (Alerta_cierre_tareas)
+Campo personalizado (Anillo)
+Campo personalizado (Approvals)
+Campo personalizado (Area Gestora)
+Campo personalizado (Articulo de Configuración)
+Campo personalizado (Atención Falla (Móvil))
+Campo personalizado (Auditoria)
+Campo personalizado (C-VID/C-Tag CoS)
+Campo personalizado (CABLE)
+Campo personalizado (CABLE //SP//CTO)
+Campo personalizado (CTO TERRENO)
+Campo personalizado (Cambio_Estado_Inicial)
+Campo personalizado (Cantidad Puertos Ocupados CTO)
+Campo personalizado (Categoría)
+Campo personalizado (Categoría de trabajo)
+Campo personalizado (Causa.)
+Campo personalizado (Cierre automatico)
+Campo personalizado (Consumo Material P.E)
+Campo personalizado (Creador Despliegue)
+Campo personalizado (Cuarta Parada De Reloj)
+Campo personalizado (Derecho)
+Campo personalizado (Dirección de correo electrónico de la empresa)
+Campo personalizado (Documentador)
+Campo personalizado (Duplicado)
+Campo personalizado (Elemento Afectado)
+Campo personalizado (Elemento De Red Afectado)
+Campo personalizado (Epic Name)
+Campo personalizado (Equipo)
+Campo personalizado (Escalamientos)
+Campo personalizado (Estado Puerto CTO Terreno)
+Campo personalizado (Exclusión)
+Campo personalizado (Fabrica)
+Campo personalizado (Falla Drop)
+Campo personalizado (Fecha Aprobación VNO 1)
+Campo personalizado (Fecha Cierre MANPR)
+Campo personalizado (Fecha Finalización)
+Campo personalizado (Fecha Inicio)
+Campo personalizado (Fecha Inicio Afectación)
+Campo personalizado (Fecha Tentativa De Ejecución)
+Campo personalizado (Fecha de inicio)
+Campo personalizado (Fecha y Hora de la Solicitud)
+Campo personalizado (Fecha y Hora de la Solución)
+Campo personalizado (Fecha y Hora del Tk Fabrica)
+Campo personalizado (Fecha y Hora del cierre)
+Campo personalizado (Fin Cuarta Parada De Reloj)
+Campo personalizado (Fin Primera Parada reloj)
+Campo personalizado (Fin Quinta Parada De Reloj)
+Campo personalizado (Fin Segunda Parada de Reloj)
+Campo personalizado (Fin Sexta Parada De Reloj)
+Campo personalizado (Fin Séptima Parada de Reloj)
+Campo personalizado (Fin Tercera Parada de Reloj)
+Campo personalizado (Final Planificado)
+Campo personalizado (Formularios abiertos)
+Campo personalizado (Formularios bloqueados)
+Campo personalizado (Formularios enviados)
+Campo personalizado (Funcionalidad Impactada)
+Campo personalizado (Funcionalidad Impactada).1
+Campo personalizado (Funcionalidad Impactada).2
+Campo personalizado (Funcionalidad Impactada).3
+Campo personalizado (Funcionalidad Impactada).4
+Campo personalizado (Funcionalidad Impactada).5
+Campo personalizado (HILO)
+Campo personalizado (Handle)
+Campo personalizado (ID del empleado)
+Campo personalizado (Impact)
+Campo personalizado (Inicio planificado)
+Campo personalizado (Investigation reason)
+Campo personalizado (Issue color)
+Campo personalizado (Major incident)
+Campo personalizado (Motivo Cancelación)
+Campo personalizado (Motivo de Parada de Reloj (PDR1))
+Campo personalizado (Motivo de Parada de Reloj (PDR2))
+Campo personalizado (Motivo de Parada de Reloj (PDR3))
+Campo personalizado (Motivo de Parada de Reloj (PDR4))
+Campo personalizado (Motivo de Parada de Reloj (PDR5))
+Campo personalizado (Motivo de Parada de Reloj (PDR6))
+Campo personalizado (Motivo de Parada de Reloj (PDR7))
+Campo personalizado (Motivo del cambio)
+Campo personalizado (Nemonico)
+Campo personalizado (Nodo)
+Campo personalizado (Nodo Afectado)
+Campo personalizado (Nodo Afectado (ETB))
+Campo personalizado (Nodo y OLT)
+Campo personalizado (Nodo y OLT (ETB))
+Campo personalizado (Nombre)
+Campo personalizado (Numero CTO)
+Campo personalizado (Numero de comentarios)
+Campo personalizado (OT - Incidente (Cliente))
+Campo personalizado (Objetivos)
+Campo personalizado (Operational categorization)
+Campo personalizado (Organizations)
+Campo personalizado (POSIBLES CRUCES EN INFRAESTRUCTURA)
+Campo personalizado (POSIBLES CRUCES EN INFRAESTRUCTURA).1
+Campo personalizado (Pending reason)
+Campo personalizado (Percepción)
+Campo personalizado (Plan de implementación (Minutograma))
+Campo personalizado (Plan de retroceso (Rollback))
+Campo personalizado (Plataformas)
+Campo personalizado (Primera Parada de Reloj)
+Campo personalizado (Product categorization)
+Campo personalizado (Project overview key)
+Campo personalizado (Project overview status)
+Campo personalizado (Proyecto)
+Campo personalizado (Quiebre_Tecnico)
+Campo personalizado (Quiebres Tecnicos)
+Campo personalizado (Quinta Parada de Reloj)
+Campo personalizado (Rank)
+Campo personalizado (Reporte Cliente)
+Campo personalizado (Request Type)
+Campo personalizado (Request language)
+Campo personalizado (Request participants)
+Campo personalizado (Requiere VM)
+Campo personalizado (Resolution)
+Campo personalizado (Responders)
+Campo personalizado (Responsable)
+Campo personalizado (Riesgo del cambio)
+Campo personalizado (Rol)
+Campo personalizado (Root cause)
+Campo personalizado (SLA CLARO v2)
+Campo personalizado (SLOT y PTO)
+Calificación de satisfacción
+Campo personalizado (Satisfaction date)
+Campo personalizado (Segunda Parada De  Reloj)
+Campo personalizado (Segundo apellido)
+Campo personalizado (Severity)
+Campo personalizado (Sexta Parada De Reloj)
+Campo personalizado (Solucion.)
+Campo personalizado (Solución afectación )
+Campo personalizado (Source)
+Campo personalizado (Start date)
+Campo personalizado (Story Points)
+Campo personalizado (Story point estimate)
+Campo personalizado (Supervisor P.E)
+Campo personalizado (Séptima Parada de Reloj)
+Campo personalizado (TIEMPO CERRADO INCIDENTE)
+Campo personalizado (TIEMPO DE RESOLUCIÒN)
+Campo personalizado (Target end)
+Campo personalizado (Target start)
+Campo personalizado (Team)
+Campo personalizado (Tercera Parada De reloj)
+Campo personalizado (Test plan)
+Campo personalizado (Tiempo Apertura (SLA))
+Campo personalizado (Tiempo Cierre (SLA))
+Campo personalizado (Tiempo Cierre Edge (SLA))
+Campo personalizado (Tiempo Cierre Osnet (SLA))
+Campo personalizado (Tiempo Cierre S3 (SLA))
+Campo personalizado (Tiempo Cierre Wom (SLA))
+Campo personalizado (Tiempo Gestion (SLA))
+Campo personalizado (Tiempo afectación (Min))
+Campo personalizado (Tiempo estado)
+Campo personalizado (Tiempo hasta primera respuesta)
+Campo personalizado (Tiempo hasta resolución)
+Campo personalizado (Tiempo para cerrar después de la resolución)
+Campo personalizado (Tiempo para revisar un cambio normal)
+Campo personalizado (Tiempo_Solucion)
+Campo personalizado (Tiempo_cierre_Incidente)
+Campo personalizado (Time to close after resolution)
+Campo personalizado (Time to first response)
+Campo personalizado (Time to resolution)
+Campo personalizado (Time to review normal change)
+Campo personalizado (Tipo Mantenimiento)
+Campo personalizado (Tipo de Falla)
+Campo personalizado (Tipo de cambio)
+Campo personalizado (Total de formularios)
+Campo personalizado (Tramos (Red Metro))
+Campo personalizado (Ultimo Comentario)
+Campo personalizado (Ultimo comentarista)
+Campo personalizado (Urgency)
+Campo personalizado (Usuarios  Finales Afectados)
+Campo personalizado (Usuarios Finales Afectados.)
+Campo personalizado (Usuarios Iniciales Afectados)
+Campo personalizado (VID/S-VID)
+Campo personalizado (VNO)
+Campo personalizado (VNO1)
+Campo personalizado (Vulnerabilidad)
+Campo personalizado (Workaround)
+Campo personalizado ([CHART] Date of First Response)
+Campo personalizado ([CHART] Time in Status)
+Campo personalizado (development)
+Campo personalizado (fecha comentario)
+Campo personalizado (Áreas de enfoque)
+Comentario
+Comentario.1
+Comentario.2
+Comentario.3
+Comentario.4
+Comentario.5
+Comentario.6
+Comentario.7
+Comentario.8
+Comentario.9
+Comentario.10
+Comentario.11
+Comentario.12
+Comentario.13
+Comentario.14
+Comentario.15
+Comentario.16
+Comentario.17
+Comentario.18
+Comentario.19
+Comentario.20
+Comentario.21
+Comentario.22
+Comentario.23
+Comentario.24
+Comentario.25
+Comentario.26
+Comentario.27
+Comentario.28
+Comentario.29
+Comentario.30
+Comentario.31
+Comentario.32
+Comentario.33
+Comentario.34
+Comentario.35
+Comentario.36
+Comentario.37
+Comentario.38
+Comentario.39
+Comentario.40
+Comentario.41
+Comentario.42
+Comentario.43
+Comentario.44
+Comentario.45
+Comentario.46
+Comentario.47
+Comentario.48
+Comentario.49
+Comentario.50
+Comentario.51
+Comentario.52
+Comentario.53
+Comentario.54
+Comentario.55
+Comentario.56
+Comentario.57
+Comentario.58
+Comentario.59
+Comentario.60
+Comentario.61
+Comentario.62
+Comentario.63
+Comentario.64
+Comentario.65
+Comentario.66
+Comentario.67
+Comentario.68
+Comentario.69
+Comentario.70
+Comentario.71
+Comentario.72
+Comentario.73
+Comentario.74
+Comentario.75
+Comentario.76
+Comentario.77
+Comentario.78
+Comentario.79
+Comentario.80
+Comentario.81
+Comentario.82
+Comentario.83
+Comentario.84
+Comentario.85
+Comentario.86
+Comentario.87
+Comentario.88
+Comentario.89
+Comentario.90
+Comentario.91
+Comentario.92
+Comentario.93
+Comentario.94
+Comentario.95
+Comentario.96
+Comentario.97
+Comentario.98
+Comentario.99
+Comentario.100
+Comentario.101
+Comentario.102
+Comentario.103
+Comentario.104
+Comentario.105
+Comentario.106
+Comentario.107
+Comentario.108
+Comentario.109
+Comentario.110
+Comentario.111
+Comentario.112
+Comentario.113
+Comentario.114
+Comentario.115
+Comentario.116
+Comentario.117
+Comentario.118
+Comentario.119
+Comentario.120
+Comentario.121
+Comentario.122
+Comentario.123
+Comentario.124
+Comentario.125
+Comentario.126
+Comentario.127
+Comentario.128
+Comentario.129
+Comentario.130
+Comentario.131
+Comentario.132
+Comentario.133
+Comentario.134
+Comentario.135
+Comentario.136
+Comentario.137
+Comentario.138
+Comentario.139
+Comentario.140
+Comentario.141
+Comentario.142
+Comentario.143
+Comentario.144
+Comentario.145
+Comentario.146
+Comentario.147
+Comentario.148
+Comentario.149
+Comentario.150
+Comentario.151
+Comentario.152
+Comentario.153
+Comentario.154
+Comentario.155
+Comentario.156
+Comentario.157
+Comentario.158
+Comentario.159
+Comentario.160
+Comentario.161
+Comentario.162
+Comentario.163
+Comentario.164
+Comentario.165
+Comentario.166
+Comentario.167
+Comentario.168
+Comentario.169
+Comentario.170
+Comentario.171
+Comentario.172
+Comentario.173
+Comentario.174
+Comentario.175
+Comentario.176
+Comentario.177
+Comentario.178
+Comentario.179
+Comentario.180
+Comentario.181
+Comentario.182
+Comentario.183
+Comentario.184
+Comentario.185
+Comentario.186
+Comentario.187
+Comentario.188
+Comentario.189
+Comentario.190
+Comentario.191
+Comentario.192
+Comentario.193
+Comentario.194
+Comentario.195
+Comentario.196
+Comentario.197
+Comentario.198
+Comentario.199
+Comentario.200
+Comentario.201
+Comentario.202
+Comentario.203
+Comentario.204
+Comentario.205
+Comentario.206
+Comentario.207
+Comentario.208
+Comentario.209
+Comentario.210
+Comentario.211
+Comentario.212
+Comentario.213
+Comentario.214
+Comentario.215
+Comentario.216
+Comentario.217
+Comentario.218
+Comentario.219
+Comentario.220
+Comentario.221
+Comentario.222
+Comentario.223
+Comentario.224
+Comentario.225
+Comentario.226
+Comentario.227
+Comentario.228
+Comentario.229
+Comentario.230
+Comentario.231
+Comentario.232
+Comentario.233
+Comentario.234
+Comentario.235
+Comentario.236
+Comentario.237
+Comentario.238
+Comentario.239
+Comentario.240
+Comentario.241
+Comentario.242
+Comentario.243
+Comentario.244
+Comentario.245
+Comentario.246
+Comentario.247
+Comentario.248
+Comentario.249
+Comentario.250
+Comentario.251
+Comentario.252
+Comentario.253
+Comentario.254
+Comentario.255
+Comentario.256
+Comentario.257
+Comentario.258
+Comentario.259
+Comentario.260
+Comentario.261
+Comentario.262
+Comentario.263
+Comentario.264
+Comentario.265
+Comentario.266
+Comentario.267
+Comentario.268
+Comentario.269
+Comentario.270
+Comentario.271
+Comentario.272
+Comentario.273
+Comentario.274
+Comentario.275
+Comentario.276
+Comentario.277
+Comentario.278
+Comentario.279
+Comentario.280
+Comentario.281
+Comentario.282
+Comentario.283
+Comentario.284
+Comentario.285
+Comentario.286
+Comentario.287
+Comentario.288
+Comentario.289
+Comentario.290
+Comentario.291
+Comentario.292
+Comentario.293
+Comentario.294
+Comentario.295
+Comentario.296
+Comentario.297
+Comentario.298
+Comentario.299
+Comentario.300
+Comentario.301
+Comentario.302
+Comentario.303
+Comentario.304
+Comentario.305
+Comentario.306
+Comentario.307
+Comentario.308
+Comentario.309
+Comentario.310
+Comentario.311
+Comentario.312
+Comentario.313
+Comentario.314
+Comentario.315
+Comentario.316
+Comentario.317
+Comentario.318
+Comentario.319
+Comentario.320
+Comentario.321
+Comentario.322
+Comentario.323
+Comentario.324
+Comentario.325
+Comentario.326
+Comentario.327
+Comentario.328
+Comentario.329
+Comentario.330
+Comentario.331
+Comentario.332
+Comentario.333
+Comentario.334
+Comentario.335
+Comentario.336
+Comentario.337
+Comentario.338
+Comentario.339
+Comentario.340
+Comentario.341
+Comentario.342
+Comentario.343
+Comentario.344
+Comentario.345
+Comentario.346
+Comentario.347
+Comentario.348
+Comentario.349
+Comentario.350
+Comentario.351
+Comentario.352
+Comentario.353
+Comentario.354
+Comentario.355
+Comentario.356
+Comentario.357
+Comentario.358
+Comentario.359
+Comentario.360
+Comentario.361
+Comentario.362
+Comentario.363
+Comentario.364
+Comentario.365
+Comentario.366
+Comentario.367
+Comentario.368
+Comentario.369
+Comentario.370
+Comentario.371
+Comentario.372
+Comentario.373
+Comentario.374
+Comentario.375
+Comentario.376
+Comentario.377
+Comentario.378
+Comentario.379
+Comentario.380
+Comentario.381
+Comentario.382
+Comentario.383
+Comentario.384
+Comentario.385
+Comentario.386
+Comentario.387
+Comentario.388
+Comentario.389
+Comentario.390
+Comentario.391
+Comentario.392
+Comentario.393
+Comentario.394
+Comentario.395
+Comentario.396
+Comentario.397
+Comentario.398
+Comentario.399
+Comentario.400
+Comentario.401
+Comentario.402
+Comentario.403
+Comentario.404
+Comentario.405
+Comentario.406
+Comentario.407
+Comentario.408
+Comentario.409
+Comentario.410
+Comentario.411
+Comentario.412
+Comentario.413
+Comentario.414
+Comentario.415
+Comentario.416
+Comentario.417
+Comentario.418
+Comentario.419
+Comentario.420
+Comentario.421
+Comentario.422
+Comentario.423
+Comentario.424
+Comentario.425
+Comentario.426
+Comentario.427
+Comentario.428
+Comentario.429
+Comentario.430
+Comentario.431
+Comentario.432
+Comentario.433
+Comentario.434
+Comentario.435
+Comentario.436
+Comentario.437
+Comentario.438
+Comentario.439
+Comentario.440
+Comentario.441
+Comentario.442
+Comentario.443
+Comentario.444
+Comentario.445
+Comentario.446
+Comentario.447
+Comentario.448
+Comentario.449
+Comentario.450
+Comentario.451
+Comentario.452
+Comentario.453
+Comentario.454
+Comentario.455
+Comentario.456
+Comentario.457
+Comentario.458
+Comentario.459
+Comentario.460
+Comentario.461
+Comentario.462
+Comentario.463
+Comentario.464
+Comentario.465
+Comentario.466
+Comentario.467
+Comentario.468
+Comentario.469
+Comentario.470
+Comentario.471
+Comentario.472
+Comentario.473
+Comentario.474
+Comentario.475
+Comentario.476
+Comentario.477
+Comentario.478
+Comentario.479
+Comentario.480
+Comentario.481
+Comentario.482
+Comentario.483
+Comentario.484
+Comentario.485
+Comentario.486
+Comentario.487
+Comentario.488
+Comentario.489
+Comentario.490
+Comentario.491
+Comentario.492
+Comentario.493
+Comentario.494
+Comentario.495
+Comentario.496
+Comentario.497
+Comentario.498
+Comentario.499
+Comentario.500
+Comentario.501
+Comentario.502
+Comentario.503
+Comentario.504
+Comentario.505
+Comentario.506
+Comentario.507
+Comentario.508
+Comentario.509
+Comentario.510
+Comentario.511
+Comentario.512
+Comentario.513
+Comentario.514
+Comentario.515
+Comentario.516
+Comentario.517
+Comentario.518
+Comentario.519
+Comentario.520
+Comentario.521
+Comentario.522
+Comentario.523
+Comentario.524
+Comentario.525
+Comentario.526
+Comentario.527
+Comentario.528
+Comentario.529
+Comentario.530
+Comentario.531
+Comentario.532
+Comentario.533
+Comentario.534
+Comentario.535
+Comentario.536
+Comentario.537
+Comentario.538
+Comentario.539
+Comentario.540
+Comentario.541
+Comentario.542
+Comentario.543
+Comentario.544
+Comentario.545
+Comentario.546
+Comentario.547
+Comentario.548
+Comentario.549
+Comentario.550
+Comentario.551
+Comentario.552
+Comentario.553
+Comentario.554
+Comentario.555
+Comentario.556
+Comentario.557
+Comentario.558
+Comentario.559
+Comentario.560
+Comentario.561
+Comentario.562
+Comentario.563
+Comentario.564
+Comentario.565
+Comentario.566
+Comentario.567
+Comentario.568
+Comentario.569
+Comentario.570
+Comentario.571
+Comentario.572
+Comentario.573
+Comentario.574
+Comentario.575
+Comentario.576
+Comentario.577
+Comentario.578
+Comentario.579
+Comentario.580
+Comentario.581
+Comentario.582
+Comentario.583
+Comentario.584
+Comentario.585
+Comentario.586
+Comentario.587
+Comentario.588
+Comentario.589
+Comentario.590
+Comentario.591
+Comentario.592
+Comentario.593
+Comentario.594
+Comentario.595
+Comentario.596
+Comentario.597
+Comentario.598
+Comentario.599
+Comentario.600
+Comentario.601
+Comentario.602
+Comentario.603
+Comentario.604
+Comentario.605
+Comentario.606
+Comentario.607
+Comentario.608
+Comentario.609
+Comentario.610
+Comentario.611
+Comentario.612
+Comentario.613
+Comentario.614
+Comentario.615
+Comentario.616
+Comentario.617
+Comentario.618
+Comentario.619
+Comentario.620
+Comentario.621
+Comentario.622
+Comentario.623
+Comentario.624
+Comentario.625
+Comentario.626
+Comentario.627
+Comentario.628
+Comentario.629
+Comentario.630
+Comentario.631
+Comentario.632
+Comentario.633
+Comentario.634
+Comentario.635
+Comentario.636
+Comentario.637
+Comentario.638
+Comentario.639
+Comentario.640
+Comentario.641
+Comentario.642
+Comentario.643
+Comentario.644
+Comentario.645
+Comentario.646
+Comentario.647
+Comentario.648
+Comentario.649
+Comentario.650
+Comentario.651
+Comentario.652
+Comentario.653
+Comentario.654
+Comentario.655
+Comentario.656
+Comentario.657
+Comentario.658
+Comentario.659
+Comentario.660
+Comentario.661
+Comentario.662
+Comentario.663
+Categoría de estado
+Categoría de estado cambiada
+
+Checking nodes:
+Checking column Campo personalizado (Nodo)...
+Unique values: 0
+Checking column Campo personalizado (Nodo Afectado)...
+Unique values: 31
+['Chapinero' 'Chiminangos' 'Asturias' 'Mosquera ' 'Itagüí' 'Transversal'
+ 'Troncal' 'Colon' 'Villa de Leyva' 'Española' 'Galán' 'Progreso'
+ 'Guayabal' 'Toberín' 'Sabaneta' 'Madrid' 'Camino Real' 'Envigado'
+ 'Palmira' 'Salitre']
+Checking column Campo personalizado (Nodo Afectado (ETB))...
+Unique values: 0
+Checking column Campo personalizado (Nodo y OLT)...
+Unique values: 0
+Checking column Campo personalizado (Nodo y OLT (ETB))...
+Unique values: 0
