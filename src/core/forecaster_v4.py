@@ -12,11 +12,17 @@ from sklearn.model_selection import TimeSeriesSplit
 from sklearn.metrics import mean_absolute_error
 import joblib
 from src.config import MODELS_DIR
-from src.core.forecaster_v2 import HOLIDAYS_2026
 from src.data.weather import get_weather_for_zones, get_weather_features_for_dates
 
 logger = logging.getLogger(__name__)
 CENTRO = 'Zona Centro'
+
+HOLIDAYS_2026 = pd.to_datetime([
+    '2026-01-01', '2026-01-12', '2026-03-23', '2026-04-02', '2026-04-03',
+    '2026-04-05', '2026-05-01', '2026-05-18', '2026-06-08', '2026-06-15',
+    '2026-07-05', '2026-07-20', '2026-08-15', '2026-08-16', '2026-10-12',
+    '2026-11-02', '2026-11-16', '2026-12-08', '2026-12-25'
+])
 
 
 class DemandForecasterV4:
