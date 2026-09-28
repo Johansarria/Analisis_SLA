@@ -42,7 +42,7 @@ def run_forecasting(input_file: str, days_to_predict: int = 30):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Ejecutar el modelo de Forecasting de Demanda')
-    parser.add_argument('--input', type=str, default=r'C:\MLpractica2\data\processed\Jira ATP resumen 2 años.csv',
+    parser.add_argument('--input', type=str, default=str(PROCESSED_DATA_DIR / 'Jira ATP resumen 2 años.csv'),
                         help='Ruta al archivo histórico de 2 años')
     parser.add_argument('--days', type=int, default=30,
                         help='Cantidad de días a predecir hacia el futuro')
