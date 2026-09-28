@@ -8,5 +8,6 @@ matplotlib>=3.7.0
 seaborn>=0.12.0
 openpyxl>=3.1.0
 optuna>=3.0.0
-category_encoders>=2.6.0
+category_encoders>=2.6.0,<2.9.0  # Tope por compatibilidad: los .pkl guardados dejan de cargar en 2.11 (falta min_group_lumping_)
 requests>=2.31.0
+pytest>=7.4.0

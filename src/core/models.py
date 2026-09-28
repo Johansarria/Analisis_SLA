@@ -17,7 +17,8 @@ logger = logging.getLogger(__name__)
 class ModelTrainer:
     """Clase para el entrenamiento y gestión de modelos de ML optimizados."""
 
-    def _sanitize_columns(self, df: pd.DataFrame) -> pd.DataFrame:
+    @staticmethod
+    def _sanitize_columns(df: pd.DataFrame) -> pd.DataFrame:
         """Limpia los nombres de las columnas para compatibilidad con XGBoost."""
         regex = re.compile(r"\[|\]|<", re.IGNORECASE)
         df.columns = [regex.sub("_", col) if any(x in str(col) for x in "[]<") else col for col in df.columns]

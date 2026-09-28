@@ -1,3 +1,4 @@
+import logging
 import os
 from pathlib import Path
 
@@ -13,6 +14,7 @@ REPORTS_DIR = OUTPUTS_DIR / "reports"
 
 # --- ARCHIVOS DE DATOS ---
 FILE_JIRA_RAW = RAW_DATA_DIR / "JiraATP.csv"
+FILE_ANS_RAW = RAW_DATA_DIR / "BASE PARA DATOS  O&M FEBRERO ZONAS-REVISADO CALI (2).xlsx"
 FILE_JIRA_CLEAN = PROCESSED_DATA_DIR / "datos_jira_regresion.csv"
 FILE_ANS_CLEAN = PROCESSED_DATA_DIR / "datos_ans_limpios.csv"
 FILE_TIME_SERIES_ZONES = PROCESSED_DATA_DIR / "serie_tiempo_zonas.csv"
@@ -47,3 +49,8 @@ def ensure_dirs():
     """Asegura que todas las carpetas necesarias existan."""
     for path in [RAW_DATA_DIR, PROCESSED_DATA_DIR, MODELS_DIR, PLOTS_DIR, REPORTS_DIR]:
         path.mkdir(parents=True, exist_ok=True)
+
+
+def setup_logging(level: int = logging.INFO):
+    """Configura el logging raíz del proyecto de forma uniforme para CLI y pipelines."""
+    logging.basicConfig(level=level, format='%(asctime)s - %(levelname)s - %(message)s')

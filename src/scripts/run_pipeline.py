@@ -1,8 +1,8 @@
 import sys
 import logging
 from src.config import (
-    ensure_dirs, FILE_JIRA_RAW, FILE_JIRA_CLEAN, 
-    FILE_ANS_CLEAN, PROCESSED_DATA_DIR, RAW_DATA_DIR
+    ensure_dirs, FILE_JIRA_RAW, FILE_ANS_RAW, FILE_JIRA_CLEAN, 
+    FILE_ANS_CLEAN
 )
 from src.data.etl import DataProcessor
 from src.core.models import ModelTrainer
@@ -32,15 +32,14 @@ def run_full_pipeline():
         processor.save_processed_data(df_jira, str(FILE_JIRA_CLEAN))
         
         # ANS ETL (Si existe el archivo Excel)
-        excel_ans = RAW_DATA_DIR / 'BASE PARA DATOS  O&M FEBRERO ZONAS-REVISADO CALI (2).xlsx'
-        if excel_ans.exists():
-            df_ans = processor.process_ans(str(excel_ans))
+        if FILE_ANS_RAW.exists():
+            df_ans = processor.process_ans(str(FILE_ANS_RAW))
             processor.save_processed_data(df_ans, str(FILE_ANS_CLEAN))
             
             # 3. Entrenamiento (Solo si hay datos ANS)
             trainer.train_ans_classifier(df_ans)
         else:
-            logger.warning(f"Archivo Excel {excel_ans} no encontrado. Saltando ETL de ANS.")
+            logger.warning(f"Archivo Excel {FILE_ANS_RAW} no encontrado. Saltando ETL de ANS.")
 
         # Oráculo Training
         trainer.train_oraculo_regressor(df_jira)
