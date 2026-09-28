@@ -29,3 +29,4 @@ __pycache__/
 # Excepción: fixtures de test (pequeños y necesarios para correr la suite)
 !tests/fixtures/*.csv
 !tests/fixtures/*.xlsx
+.pytest_cache/
