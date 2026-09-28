@@ -34,16 +34,18 @@ Analisis_SLA/
 │   │   ├── detector.py               # AnomalyDetector: deteccion de nodos criticos (K-Means)
 │   │   ├── forecaster.py             # DemandForecaster: baseline por Zona/Nodo
 │   │   ├── forecaster_v4.py          # DemandForecasterV4: clima + quantile + ensemble DOW
-│   │   └── forecaster_v5.py          # DemandForecasterV5: iterativo + target-encoding + triple-quantile
+│   │   ├── forecaster_v5.py          # DemandForecasterV5: iterativo + target-encoding + triple-quantile
+│   │   └── inference.py              # InferenceEngine: carga .pkl y predice sobre datos nuevos
 │   ├── data/
 │   │   ├── etl.py                    # DataProcessor: limpieza de Jira y Excel ANS
 │   │   └── weather.py                # WeatherProvider: conexion con API Open-Meteo
 │   ├── utils/
 │   │   └── visualization.py          # Visualizer: generacion de graficos (barras, radar, pie)
 │   ├── scripts/
-│   │   └── run_pipeline.py           # Pipeline maestro que orquesta todo el proceso
+│   │   ├── run_pipeline.py           # Pipeline maestro que orquesta todo el proceso
+│   │   └── predict.py                # CLI de inferencia sobre modelos ya entrenados
 │   └── config.py                     # Configuracion centralizada de rutas, columnas y constantes
-├── tests/                            # Suite de pruebas con Pytest
+├── tests/                            # Suite de pruebas con Pytest (fixtures en tests/fixtures/)
 ├── legacy/                           # Scripts originales preservados (14 archivos)
 ├── AGENTES.md                        # Guia maestra de desarrollo para agentes IA
 ├── README.md
@@ -78,6 +80,27 @@ Clase que gestiona el ciclo de vida completo de los modelos XGBoost:
 | `train_ans_classifier()` | Entrena clasificador XGBoost con balanceo de clases (`scale_pos_weight`). Evalua con `classification_report`. Guarda modelo + features en `modelo_ans_xgboost.pkl` |
 | `train_oraculo_regressor()` | Entrena regresor XGBoost para predecir minutos de resolucion. Evalua con MAE. Guarda en `modelo_oraculo_xgb.pkl` |
 | `load_model()` | Carga modelos entrenados desde disco |
+
+### `src/core/inference.py` -- InferenceEngine
+
+Motor de inferencia para usar los modelos guardados con datos nuevos (Jira del dia, lote historico, etc.):
+
+| Metodo | Funcion |
+|--------|---------|
+| `__init__(model_path)` | Carga el `.pkl` y expone `model`, `encoder` y `features` |
+| `predict(df)` | Aplica el `TargetEncoder` guardado, alinea columnas con las features del modelo y devuelve la prediccion |
+| `predict_proba(df)` | Probabilidades de clase (solo clasificador ANS) |
+
+### `src/scripts/predict.py` -- CLI de Prediccion
+
+Predice sobre un CSV sin reentrenar nada:
+
+```bash
+python -m src.scripts.predict --input_csv data/processed/datos_jira_regresion.csv --model oracle --output_csv salida_oraculo.csv
+python -m src.scripts.predict --input_csv data/processed/datos_ans_limpios.csv   --model ans    --output_csv salida_ans.csv
+```
+
+`--model oracle` estima los minutos de resolucion; `--model ans` clasifica cumplimiento (1 = no cumple). El CSV de salida es el de entrada mas la columna `Prediccion`.
 
 ### `src/core/forecaster.py` -- DemandForecaster
 
@@ -142,6 +165,7 @@ Genera graficos usando matplotlib y seaborn:
 
 - `run_pipeline.py`: Orquesta el flujo de clasificación y detección de anomalías (ANS y K-Means).
 - `run_forecasting.py`: Orquesta de forma independiente el flujo de predicción de demanda de tickets (Time Series XGBoost).
+- `predict.py`: Inferencia sobre los modelos ya entrenados (sin reentrenar), con salida CSV.
 
 Ejecucion: 
 ```bash
@@ -165,6 +189,11 @@ cd Analisis_SLA
 ```bash
 pip install -r requirements.txt
 ```
+
+> **Compatibilidad de artefactos:** los `.pkl` de `models/` se guardaron con un `category_encoders` anterior a 2.9.
+> Con 2.9+ el encoder guardado ya no carga (`'TargetEncoder' object has no attribute 'min_group_lumping_'`),
+> por eso `requirements.txt` fija el tope `<2.9.0`. Si se instala una version superior, hay que reentrenar
+> los modelos con `python -m src.scripts.run_pipeline` antes de usar `predict.py`.
 
 ### 3. Preparar los datos
 
@@ -195,11 +224,18 @@ python validate_v5_wf.py
 pytest tests/ -v
 ```
 
-Pruebas incluidas:
-- **Infraestructura**: existencia de archivos criticos (parametrizado, 5 asserts)
-- **Integridad de datos**: ausencia de nulos en `Minutos_Resolucion`, presencia de columnas clave
-- **Prediccion del modelo**: carga y prediccion dummy con el regresor Oraculo
-- **Logica de negocio**: validacion de coherencia en perfiles de anomalia
+Suite incluida (18 pruebas):
+
+| Archivo | Cubre |
+|---------|-------|
+| `tests/test_etl.py` | Fechas en espanol, filtro de outliers (15 min - 5 dias), features de ingenieria, target binario del ANS |
+| `tests/test_models.py` | Entrenamiento de ANS y Oraculo con encoder y features persistidos, y prediccion numerica al recargar el modelo |
+| `tests/test_detector.py` | Grupo critico = mayor promedio de fallas, exclusion de nodos con 5 o menos incidentes |
+| `tests/test_pipeline.py` | Pipeline completo sobre fixtures: genera processed, modelos y radar de anomalias en un directorio temporal |
+| `tests/test_operacion_sla.py` | Integridad de artefactos en disco (datasets procesados y modelos entrenados) |
+
+Las pruebas de ETL, modelos, detector y pipeline usan fixtures propios (`tests/fixtures/`) y no necesitan los datos reales.
+`test_operacion_sla.py` si requiere `data/processed/` poblado y los modelos en `models/`.
 
 ---
 
