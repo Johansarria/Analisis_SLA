@@ -23,6 +23,7 @@ El proyecto fue reestructurado siguiendo los principios **SOLID**, **Clean Code*
 Analisis_SLA/
 ├── data/
 │   ├── raw/                          # Datos originales (JiraATP.csv, Excel O&M)
+│   ├── incoming/                     # Exportes nuevos de Jira (adjuntos) listos para procesar
 │   └── processed/                    # Datasets limpios generados por el ETL
 ├── models/                           # Modelos entrenados (.pkl)
 ├── outputs/
@@ -35,7 +36,9 @@ Analisis_SLA/
 │   │   ├── forecaster.py             # DemandForecaster: baseline por Zona/Nodo
 │   │   ├── forecaster_v4.py          # DemandForecasterV4: clima + quantile + ensemble DOW
 │   │   ├── forecaster_v5.py          # DemandForecasterV5: iterativo + target-encoding + triple-quantile
-│   │   └── inference.py              # InferenceEngine: carga .pkl y predice sobre datos nuevos
+│   │   ├── inference.py              # InferenceEngine: carga .pkl y predice sobre datos nuevos
+│   │   ├── heatmap.py                # HeatmapNodos: matriz Nodo x Mes con proyeccion run-rate
+│   │   └── temporal.py                # AnalisisTemporal: hora, franja, dia de semana y proyeccion por dia
 │   ├── data/
 │   │   ├── etl.py                    # DataProcessor: limpieza de Jira y Excel ANS
 │   │   └── weather.py                # WeatherProvider: conexion con API Open-Meteo
@@ -43,6 +46,8 @@ Analisis_SLA/
 │   │   └── visualization.py          # Visualizer: generacion de graficos (barras, radar, pie)
 │   ├── scripts/
 │   │   ├── run_pipeline.py           # Pipeline maestro que orquesta todo el proceso
+│   │   ├── heatmap_nodos.py          # CLI del mapa de calor Nodo x Mes (ventana N meses, filtro por zona)
+│   │   ├── analisis_temporal.py      # Informe visual de patrones por hora/dia/fecha (PDF + XLSX + PNG)
 │   │   └── predict.py                # CLI de inferencia sobre modelos ya entrenados
 │   └── config.py                     # Configuracion centralizada de rutas, columnas y constantes
 ├── tests/                            # Suite de pruebas con Pytest (fixtures en tests/fixtures/)
@@ -101,6 +106,51 @@ python -m src.scripts.predict --input_csv data/processed/datos_ans_limpios.csv  
 ```
 
 `--model oracle` estima los minutos de resolucion; `--model ans` clasifica cumplimiento (1 = no cumple). El CSV de salida es el de entrada mas la columna `Prediccion`.
+
+### `src/core/heatmap.py` + `src/scripts/heatmap_nodos.py` -- Mapa de calor Nodo x Mes
+
+Reemplaza al script historico `legacy/heatzone_nodos.py`, que traia el corte, los meses y el umbral quemados en el codigo. Construye la matriz **Nodo afectado x Mes** desde un export de Jira (columnas `Creada` y `Campo personalizado (Nodo Afectado)`) y proyecta por **run-rate** el mes en curso para compararlo con los meses cerrados:
+
+```bash
+# Ventana de 3 meses sobre el export mas reciente de data/incoming
+python -m src.scripts.heatmap_nodos --months 3
+
+# Solo una zona, con el corte en una fecha concreta
+python -m src.scripts.heatmap_nodos --input data/incoming/zsur.csv --months 3 --zona ZSUR --end 2026-09-30
+```
+
+| Parametro | Efecto |
+|---|---|
+| `--input` | Export CSV de Jira. Por defecto, el archivo mas reciente de `data/incoming/` |
+| `--months` | Tamano de la ventana, alineada a meses calendario (por defecto 3: el mes del corte y los 2 anteriores). El corte por defecto es el ultimo dato del export |
+| `--inicio` / `--end` | Fijan la fecha de arranque y la de corte (YYYY-MM-DD) |
+| `--zona` | Limita a una o varias zonas (`ZSUR`, `Zona Suroccidente`, ...) |
+| `--min-total` / `--top` / `--umbral` | Filtro de nodos pequenos, nodos en la imagen y marca de fuego en la tabla ASCII |
+
+Salidas: informe `.xlsx` (hoja `Heatmap` con la matriz y el contexto del corte + hoja `Detalle` con cada incidencia), imagen `.png` del top de nodos y un CSV interno en `data/processed/`. La logica esta cubierta por `tests/test_heatmap.py`.
+
+### `src/core/temporal.py` + `src/scripts/analisis_temporal.py` -- Patrones de falla por hora, dia y fecha
+
+Analisis descriptivo pensado para que lo lea cualquiera (jefes de operacion, no ingenieros), montado sobre el mismo detalle del heatmap. Responde cuatro preguntas: en que momento del dia se reportan las fallas, que dias de la semana se concentran, como evoluciona la operacion dia a dia y cuanto esperar si el patron se mantiene.
+
+```bash
+# Informe de los ultimos 3 meses de la zona sur
+python -m src.scripts.analisis_temporal --input data/incoming/Jira_ATP_nuevo.csv --zona ZSUR --months 3
+
+# Otras ventanas / otro horizonte de proyeccion
+python -m src.scripts.analisis_temporal --zona ZCEN --months 6 --semanas 8 --top-nodos 12
+```
+
+Franjas del dia: **Madrugada** 00-05, **Mañana** 06-11, **Tarde** 12-17, **Noche** 18-23. La proyeccion repite el promedio historico de cada dia de la semana (no es un modelo: no incluye clima, obras ni cambios de red) y excluye el ultimo dia del export, que viene cortado a la hora de la descarga.
+
+| Salida | Contenido |
+|---|---|
+| `.pdf` | Informe de lectura: pagina de resumen en lenguaje llano + una grafica por pagina (hora, dia de semana, evolucion diaria, nodo x franja, dia x hora, proyeccion) |
+| `.xlsx` | Las mismas cifras por hoja (`Resumen`, `Por hora`, `Por franja`, `Por dia de semana`, `Por fecha`, `Nodo x franja`, `Dia x hora`, `Proyeccion`, `Detalle`) mas hoja `Graficas` con las imagenes |
+| `.png` | Cada grafica suelta en `outputs/plots/`, para pegar en una presentacion |
+| `.csv` | Detalle con las columnas `Hora`, `Franja`, `DiaSemana`, `FinDeSemana` y `FechaDia`, para cruces posteriores |
+
+Logica cubierta por `tests/test_temporal.py`. La hora usada es la de creacion del ticket en Jira (cuando se reporta), no necesariamente la del dano: el informe lo advierte en su ultima seccion.
 
 ### `src/core/forecaster.py` -- DemandForecaster
 
@@ -224,7 +274,7 @@ python validate_v5_wf.py
 pytest tests/ -v
 ```
 
-Suite incluida (18 pruebas):
+Suite incluida (44 pruebas):
 
 | Archivo | Cubre |
 |---------|-------|
@@ -232,6 +282,8 @@ Suite incluida (18 pruebas):
 | `tests/test_models.py` | Entrenamiento de ANS y Oraculo con encoder y features persistidos, y prediccion numerica al recargar el modelo |
 | `tests/test_detector.py` | Grupo critico = mayor promedio de fallas, exclusion de nodos con 5 o menos incidentes |
 | `tests/test_pipeline.py` | Pipeline completo sobre fixtures: genera processed, modelos y radar de anomalias en un directorio temporal |
+| `tests/test_heatmap.py` | Ventana de N meses, filtro por zona, proyeccion run-rate del mes en curso y render ASCII |
+| `tests/test_temporal.py` | Franjas horarias, hora pico, dia de semana, serie diaria con dia incompleto y proyeccion por dia de semana |
 | `tests/test_operacion_sla.py` | Integridad de artefactos en disco (datasets procesados y modelos entrenados) |
 
 Las pruebas de ETL, modelos, detector y pipeline usan fixtures propios (`tests/fixtures/`) y no necesitan los datos reales.

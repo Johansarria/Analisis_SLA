@@ -30,3 +30,6 @@ __pycache__/
 !tests/fixtures/*.csv
 !tests/fixtures/*.xlsx
 .pytest_cache/
+
+# Exportes crudos de Jira: datos del cliente, no van al repo
+data/incoming/
