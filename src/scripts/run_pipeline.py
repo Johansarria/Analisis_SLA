@@ -52,7 +52,16 @@ def run_full_pipeline():
         
         logger.info(f"Detección completada. Nodos críticos encontrados: {len(peligros)}")
 
-        # 5. Visualización
+        # 5. Guardar resultados para Dashboard
+        perfiles_path = PROCESSED_DATA_DIR / "perfiles_nodos.csv"
+        peligros_path = PROCESSED_DATA_DIR / "nodos_criticos.csv"
+        
+        perfiles_full.to_csv(perfiles_path, index=False)
+        top_nodos.to_csv(peligros_path, index=False)
+        
+        logger.info(f"Resultados de anomalías guardados en {PROCESSED_DATA_DIR}")
+
+        # 6. Visualización
         viz.plot_anomaly_radar(top_nodos)
         
         # Simulación de otros datos para gráficos (si existen los archivos de serie de tiempo)

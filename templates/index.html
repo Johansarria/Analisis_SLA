@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLA Analysis System - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=1.2">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span>NOC Dashboard</span>
+        </div>
+        <ul class="nav-links">
+            <li class="nav-item active" onclick="switchTab('dashboard', this)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                Panel General
+            </li>
+            <li class="nav-item" onclick="switchTab('reports', this)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                Informes Visuales
+            </li>
+            <li class="nav-item" onclick="switchTab('forecast', this)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                Predicción
+            </li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <header>
+            <div>
+                <p style="color: var(--text-muted); font-size: 0.8125rem; font-weight: 600; margin-bottom: 0.25rem;">INICIO > <span id="breadcrumb">PANEL GENERAL</span></p>
+                <h1>SLA Analysis System</h1>
+                <span id="last-update" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 500;">Cargando estado...</span>
+            </div>
+
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <div style="display: flex; gap: 1rem; align-items: center; background: #FFF; padding: 0.5rem 1rem; border-radius: 0.75rem; border: 1px solid var(--border);">
+                    <div style="display: flex; flex-direction: column;">
+                        <span style="font-size: 0.6rem; color: var(--text-muted); font-weight: 700;">DESDE</span>
+                        <input type="date" id="start-date" style="border: none; font-size: 0.8rem;">
+                    </div>
+                    <div style="display: flex; flex-direction: column;">
+                        <span style="font-size: 0.6rem; color: var(--text-muted); font-weight: 700;">HASTA</span>
+                        <input type="date" id="end-date" style="border: none; font-size: 0.8rem;">
+                    </div>
+                    <button class="btn-primary" id="range-btn" style="padding: 0.3rem 0.6rem; font-size: 0.7rem;">Análisis Intervalo</button>
+                </div>
+                
+                <button class="btn-primary" id="eom-btn" style="background: var(--success);">Fin de Mes</button>
+                
+                <div style="border-left: 1px solid var(--border); height: 32px; margin: 0 0.5rem;"></div>
+                
+                <input type="file" id="file-upload" style="display: none;" accept=".csv,.xlsx">
+                <button class="btn-primary" style="background: #94A3B8;" onclick="document.getElementById('file-upload').click()">Cargar CSV</button>
+                <button class="btn-primary" id="refresh-btn">Procesar Todo</button>
+            </div>
+
+
+
+        </header>
+
+        <!-- PANEL GENERAL -->
+        <section id="dashboard-tab" class="tab-content active">
+            <div class="kpi-grid">
+                <div class="card kpi-card">
+                    <h3>Total Tickets Hoy</h3>
+                    <div class="value" id="dash-total">-</div>
+                    <div class="trend" id="dash-trend" style="color: var(--success);">+--% vs ayer</div>
+                </div>
+                <div class="card kpi-card">
+                    <h3>SLA Cumplimiento %</h3>
+                    <div class="value">98.4%</div>
+                    <div class="trend" style="color: var(--primary);">En rango meta</div>
+                </div>
+                <div class="card kpi-card">
+                    <h3>Nodos Críticos</h3>
+                    <div class="value" style="color: var(--danger);">3</div>
+                    <div class="trend" style="color: var(--danger);">Acción Requerida</div>
+                </div>
+                <div class="card kpi-card">
+                    <h3>Zonas Activas</h3>
+                    <div class="value">4/4</div>
+                    <div class="trend" style="color: var(--success);">Operación OK</div>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="card">
+                    <h3>Demanda por Zona</h3>
+                    <div class="chart-container">
+                        <canvas id="dashBarChart"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Distribución de Carga</h3>
+                    <div class="chart-container">
+                        <canvas id="dashDonutChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card table-card">
+                <div class="table-header">Últimas Alertas</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nodo</th>
+                            <th>Zona</th>
+                            <th>Prioridad</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>BOG-N-045</td>
+                            <td>Centro</td>
+                            <td><span class="badge badge-high">CRÍTICA</span></td>
+                            <td>Escalado L2</td>
+                        </tr>
+                        <tr>
+                            <td>MED-O-112</td>
+                            <td>Noroccidente</td>
+                            <td><span class="badge badge-mid">MEDIA</span></td>
+                            <td>En Revisión</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- INFORMES VISUALES -->
+        <section id="reports-tab" class="tab-content">
+            <div class="charts-grid">
+                <div class="card">
+                    <h3>Análisis de Riesgo: Real vs Proyectado</h3>
+                    <div class="chart-container">
+                        <canvas id="riskChart"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Radar de Anomalías</h3>
+                    <div class="chart-container">
+                        <canvas id="anomalyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="margin-bottom: 2rem;">
+                <h3>Tendencia de Demanda (30 días)</h3>
+                <div class="chart-container" style="height: 250px;">
+                    <canvas id="trendLineChart"></canvas>
+                </div>
+            </div>
+            <div class="card table-card">
+                <div class="table-header">Métricas de Precisión del Modelo</div>
+                <table id="prec-metrics-table">
+                    <thead>
+                        <tr>
+                            <th>Zona</th>
+                            <th>MAE</th>
+                            <th>MAPE %</th>
+                            <th>Versión Modelo</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- PREDICCION -->
+        <section id="forecast-tab" class="tab-content">
+            <div class="card" style="margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Total Nacional Proyectado</p>
+                    <div style="font-size: 2.5rem; font-weight: 800;" id="forecast-national">- tickets</div>
+                </div>
+                <div class="chart-container" style="width: 200px; height: 80px;">
+                    <canvas id="miniTrendChart"></canvas>
+                </div>
+            </div>
+
+            <div class="zonal-summary" id="zonal-cards">
+                <!-- Cards for each zone -->
+            </div>
+
+            <div class="card table-card">
+                <div class="table-header">
+                    <span>Desglose por Nodo</span>
+                    <div style="display: flex; gap: 1rem; align-items: center;">
+                        <span style="font-size: 0.75rem; color: var(--text-muted);">Filtrar por Zona:</span>
+                        <select id="zone-filter" style="padding: 0.35rem; border-radius: 0.4rem; border: 1px solid var(--border); font-size: 0.8125rem;">
+                            <option value="all">Todas las Zonas</option>
+                        </select>
+                    </div>
+                </div>
+
+                <table id="node-forecast-table">
+                    <thead>
+                        <tr>
+                            <th>Nodo</th>
+                            <th>Zona</th>
+                            <th>Tickets Estimados</th>
+                            <th>Mínimo Probable</th>
+                            <th>Máximo Probable</th>
+                        </tr>
+                    </thead>
+
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}?v=1.2"></script>
+</body>
+</html>
